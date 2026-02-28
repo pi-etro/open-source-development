@@ -1,2 +1,5 @@
 # open-source-development
-Repository used for the MAC5856 course at IME-USP
+
+This branch is the GitHub pages to register the course activities.
+
+You can visit the blog at: https://pi-etro.github.io/open-source-development/
