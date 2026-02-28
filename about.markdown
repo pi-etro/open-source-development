@@ -4,15 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Hello there, I'm Pietro! I'm a Master’s degree student in Computer Science at [IME-USP](https://www.ime.usp.br/en/home/)
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+This website is a blog to register the activities developed for the [MAC5856 Open Source Development](https://uspdigital.usp.br/janus/Disciplina?sgldis=MAC5856) course at IME-USP.
