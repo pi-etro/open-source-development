@@ -3,3 +3,7 @@
 
 # IDE
 .idea/
+
+# github pages
+_site/
+Gemfile.lock
