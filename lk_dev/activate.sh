@@ -23,8 +23,25 @@ function launch_vm_qemu() {
         -nographic
 }
 
+# Registers and starts a VM with `libvirt`
+function create_vm_virsh() {
+    # DON'T FORGET TO ADAPT THE `--boot` LINE!!!
+    sudo virt-install \
+      --name "arm64" \
+      --memory 2048 \
+      --arch aarch64 --machine virt \
+      --osinfo detect=on,require=off \
+      --import \
+      --features acpi=off \
+      --disk path="${VM_DIR}/arm64_img.qcow2" \
+      --boot kernel=${BOOT_DIR}/vmlinuz-6.1.0-43-arm64,initrd=${BOOT_DIR}/initrd.img-6.1.0-43-arm64,kernel_args="loglevel=8 root=/dev/vda2 rootwait" \
+      --network bridge:virbr0 \
+      --graphics none
+}
+
 # export functions so they persist in the new Bash shell session
 export -f launch_vm_qemu
+export -f create_vm_virsh
 
 # prompt preamble
 prompt_preamble='(LK-DEV)'
