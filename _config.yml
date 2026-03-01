@@ -23,8 +23,9 @@ author: Pietro Di Consolo Gregorio
 email: pietro.gregorio@usp.br
 description: >- # this means to ignore newlines until "baseurl:"
   Activity blog for the MAC5856 Open Source Development course at IME-USP.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+domain: "pi-etro.github.io"
+baseurl: "/open-source-development" # the subpath of your site, e.g. /blog
+url: "https://pi-etro.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  pi-etro
 linkedin_username: gregorio-pietro
 
