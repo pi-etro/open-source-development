@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # environment variables
-export LK_DEV_DIR="$HOME/github/open-source-development/lk_dev" # path to testing environment directory
+export LK_DEV_DIR="/home/lk_dev" # path to testing environment directory
 export VM_DIR="${LK_DEV_DIR}/vm" # path to VM directory
 export BOOT_DIR="${VM_DIR}/arm64_boot" # path to boot artifacts
 
