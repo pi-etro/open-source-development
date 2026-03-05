@@ -18,7 +18,7 @@ function launch_vm_qemu() {
         -smp 2 \
         -netdev user,id=net0 -device virtio-net-device,netdev=net0 \
         -initrd "${BOOT_DIR}/initrd.img-6.1.0-43-arm64" \
-        -kernel "${BOOT_DIR}/vmlinuz-6.1.0-43-arm64" \
+        -kernel "${IIO_TREE}/arch/arm64/boot/Image" \
         -append "loglevel=8 root=/dev/vda2 rootwait" \
         -device virtio-blk-pci,drive=hd \
         -drive if=none,file="${VM_DIR}/arm64_img.qcow2",format=qcow2,id=hd \
@@ -36,7 +36,7 @@ function create_vm_virsh() {
       --import \
       --features acpi=off \
       --disk path="${VM_DIR}/arm64_img.qcow2" \
-      --boot kernel=${BOOT_DIR}/vmlinuz-6.1.0-43-arm64,initrd=${BOOT_DIR}/initrd.img-6.1.0-43-arm64,kernel_args="loglevel=8 root=/dev/vda2 rootwait" \
+      --boot kernel=${IIO_TREE}/arch/arm64/boot/Image,initrd=${BOOT_DIR}/initrd.img-6.1.0-43-arm64,kernel_args="loglevel=8 root=/dev/vda2 rootwait" \
       --network bridge:virbr0 \
       --graphics none
 }
