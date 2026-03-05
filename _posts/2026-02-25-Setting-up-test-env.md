@@ -56,7 +56,7 @@ directory and it's groups, I had to restart the computer, logging out and back i
 The Debian image from the guide wasn't available anymore, so the version used was the [daily version 20260225-2399](http://cdimage.debian.org/cdimage/cloud/bookworm/daily/20260225-2399/debian-12-nocloud-arm64-daily-20260225-2399.qcow2).
 
 > ⚠️ Remember to start `libvirtd` after restarting the computer.
-> ```
+> ```bash
 > sudo systemctl start libvirtd
 > systemctl status libvirtd
 > ```
