@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "🏗️🐧 Building and booting a custom Linux kernel with kw"
+title:  "🏗️ Building and booting a custom Linux kernel with kw"
 date:   2026-03-04 15:40:00 -0300
 categories: [linux kernel]
 ---

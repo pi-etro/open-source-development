@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "🧪🐧 Setting up a test environment for Linux Kernel Development"
+title:  "🧪 Setting up a test environment for Linux Kernel Development"
 date:   2026-02-25 16:20:00 -0300
 categories: [linux kernel]
 ---
