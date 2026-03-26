@@ -54,21 +54,40 @@ root@localhost:~# ./write_prog simple_char_node
 
 #### Tutorial steps
 
-- Create an example character device
-- Build linux image: `make -C "$IIO_TREE" -j$(nproc) Image.gz modules`
-  - This prompts a lot of configuration questions
-  - Executed `make -C "$TREE_IIO" olddefconfig` but this failed with "make: the '-C' option requires a non-empty string argument"
-- I ended up **not** building the image again and only following the steps for the module installation, and the simple_char driver loaded successfully.
-- This was the result, which I think could indicate that the example character device was **not working correctly**:
+The following steps were executed to test the simple_char driver. This could be considered a basic example of a workflow
+for adding a module to the kernel, building, and installing it.
 
+- Create an example character device
+- Enable the device: `make -C "$IIO_TREE" menuconfig`
+- Build linux image: `kw build --clean && kw build`
+- Install the module:
 ```bash
-root@localhost:~# ./read_prog simple_char_node
-Read buffer: ������
+mkdir "${VM_DIR}/arm64_rootfs"
+sudo guestmount --rw --add "${VM_DIR}/arm64_img.qcow2" --mount /dev/vda2 "${VM_DIR}/arm64_rootfs"
+sudo --preserve-env make -C "${IIO_TREE}" INSTALL_MOD_PATH="${VM_DIR}/arm64_rootfs" modules_install
+sudo guestunmount "${VM_DIR}/arm64_rootfs"
+```
+- Start the VM: `sudo virsh start arm64`
+- Connect to the VM: `ssh root@$(sudo virsh net-dhcp-leases default | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b')`
+- Get information about the module: `modinfo simple_char`
+- Load the module: `modprobe simple_char`
+- See kernel logs: `dmesg | tail`
+
+
+Initially the device wasn't writing to the buffer, giving me the following error:
+```bash
 root@localhost:~# ./write_prog simple_char_node
 Error: 9wrote -1 bytes to buffer
-root@localhost:~# ./read_prog simple_char_node
-Read buffer: �� ���
-root@localhost:~#
+```
+
+But this was caused by a misconfiguration with the device interface (`simple_char_node`). By deleting and recreating it
+with the correct major number (`cat /proc/devices | grep simp`) I was able to write and read using the device.
+```bash
+root@localhost:~# ./write_prog simple_char_node
+wrote 256 bytes to buffer
+root@localhost:~# ./read_prog simple_char_node 
+Read buffer: A new message for simple_char.
+
 ```
 
 ### Reference
